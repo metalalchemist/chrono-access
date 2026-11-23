@@ -84,11 +84,17 @@ objetivo seleccionado, `Control+F6` selecciona un objetivo y `Control+F7` calcul
 
 ## Créditos y licencias
 
-- **Prism** (<https://github.com/ethindp/prism>), licencia MPL-2.0. `runtime/prism.dll` es una
-  compilación de ese proyecto y se distribuye aquí conservando su licencia; el código fuente
-  está disponible en el enlace anterior.
-- **Snes9x** y su fork con Lua, ver la sección del emulador.
-- El resto de este repositorio no declara licencia todavía.
+- **Código de este proyecto**: licencia MIT, texto completo en `LICENSE`.
+- **Prism** (<https://github.com/ethindp/prism>): MPL-2.0, texto completo en
+  `LICENSES/MPL-2.0.md`. `runtime/prism.dll` es una compilación de ese proyecto y se distribuye
+  conservando su licencia; el código fuente está disponible en el enlace anterior.
+- **Snes9x** y su fork con Lua: ver la sección del emulador.
+- **Recursos del juego**: los sonidos de `runtime/sounds/` son propiedad de Square Enix. No
+  están cubiertos por la licencia MIT ni se autoriza su uso fuera de este proyecto; se incluyen
+  como referencia para quien ya posee el juego.
+
+La MIT y la MPL-2.0 son compatibles: la MPL-2.0 solo impone obligaciones sobre sus propios
+archivos (`prism.dll`), no sobre el código de este repositorio.
 
 ## Estado
 
