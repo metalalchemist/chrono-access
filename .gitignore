@@ -1,0 +1,11 @@
+# Reader logs
+*.log
+
+# Build leftovers
+*.obj
+*.o
+*.pdb
+
+# Windows shell noise
+Thumbs.db
+desktop.ini

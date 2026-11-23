@@ -1,0 +1,27 @@
+-- Native hangar actors: 28 = Nu, 30 = Epoch; other actors are scenery/events.
+return {
+ id='eras83_243',location=243,name='Bóveda Bedel, hangar del Epoch',
+ article='',house='Bóveda Bedel, hangar del Epoch',bounds={0,0,1024,2048},
+ guidance='Control F6 selecciona la criatura extraña, el Epoch y sus accesos laterales; Control F5 consulta dirección y distancia. La criatura repite las instrucciones con A. Para subir al Epoch, rodea a la criatura por la izquierda o la derecha, ve al acceso lateral, mira hacia la máquina y pulsa A. Elige Despegar o Desembarcar con arriba y abajo y confirma con A. En la rueda del tiempo, L y R o las direcciones eligen la época; A confirma y B cancela. Si todavía no aparece la criatura, examina el extremo norte y regresa al punto de encuentro del sur. La salida al pasaje está al sur.',
+ people={[16]=false,[18]=false,[20]=false,[22]=false,[24]=false,
+  [26]=false,[28]=false,[30]=false,[32]=false},friendlyActors={[28]=true},
+ features={
+  {name='Paso a Bóveda Bedel, pasaje del hangar',sound='door',
+   box={112,496,144,512},nativeExit=15011549},
+  {name='Criatura extraña; acércate y pulsa A para escuchar las instrucciones',
+   sound='person',box={120,296,136,312},entity=28,followEntity=true,
+   entityBounds={0,0,256,400}},
+  {name='Epoch; acércate por un lado y pulsa A para subir',sound='furniture',
+   box={120,280,136,296},entity=30,followEntity=true,entityBounds={0,0,256,400}},
+  {name='Acceso occidental al Epoch; mira al este y pulsa A',sound='connection',
+   box={104,284,108,292},entity=30,entityBounds={120,280,144,296}},
+  {name='Acceso oriental al Epoch; mira al oeste y pulsa A',sound='connection',
+   box={148,284,152,292},entity=30,entityBounds={120,280,144,296}},
+  {name='Extremo norte del hangar; examina con A antes de regresar al sur',
+   sound='furniture',box={120,80,144,112}},
+  {name='Punto de encuentro del hangar; acércate y pulsa A',sound='furniture',
+   box={120,376,136,384},state={address=0x7F00EE,mask=128,
+    onText='la criatura y el Epoch ya están disponibles al norte',
+    offText='examina primero el extremo norte y vuelve aquí'}},
+ },
+}

@@ -1,0 +1,5 @@
+* text=auto
+
+*.dll binary
+*.wav binary
+*.mp3 binary

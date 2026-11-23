@@ -1,0 +1,70 @@
+return {
+-- BEGIN ARRIS: native exits, chests, event actors and chase route.
+ {id="arris_214",location=214,name="Bóveda Arris",article="la ",house="la Bóveda Arris",bounds={0,0,1024,1024},people={[16]=false,[18]=false,[20]=false,[24]=false,[30]=false},guidance="La salida al exterior está al sur. La escotilla al subsuelo está entre los habitantes, al sur de la persona central. Acércate por la plataforma del norte de la escotilla y baja por su escalera; la pasarela inferior está en otro nivel. Aquí hay comerciante y Tauritón. El punto de guardado está al oeste de la escotilla, junto a la zona de los habitantes.",features={
+  {name="Paso a mapa exterior de 2300 d. C.",sound="door",box={784,496,816,512}},
+  {name="Paso a subsuelo de Arris, consolas",sound="door",box={768,256,784,272}},
+  {name="Tauritón; examina desde el sur",sound="furniture",box={672,104,688,120}},
+  {name="Punto de guardado de Arris; al oeste de la escotilla",sound="save_point",box={608,152,624,168},entity=16},
+  {name="Escotilla al subsuelo; acceso por la plataforma norte",sound="stairs",box={768,232,784,248}},
+  {name="Plataforma norte de la escotilla",sound="connection",box={768,208,784,224}},
+ }},
+ {id="arris_216",location=216,name="subsuelo de Arris, consolas",article="el ",house="la Bóveda Arris",bounds={0,0,1024,1024},people={[18]=false},hasSwitches=true,guidance="Subsuelo de Arris. La escalera sureste vuelve a los habitantes. La escalera noroeste lleva a las vigas y al Guardián. Hay dos consolas al norte. Tras obtener la contraseña de la rata, mira al norte ante una consola y pulsa L, R y A juntos. En el teclado actual son A, S y V: S, D y A abre el menú. El corredor hacia las profundidades está al este.",features={
+  {name="Paso a Bóveda Arris",sound="door",box={704,640,736,656}},
+  {name="Escalera hacia la rata y el Guardián",sound="stairs",box={528,544,560,584}},
+  {name="Paso a corredor de enemigos de Arris",sound="door",box={720,576,752,592}},
+  {name="Escalera sureste de regreso a los habitantes",sound="stairs",box={720,648,736,664}},
+  {name="Giro del pasillo inferior hacia las consolas",sound="connection",box={608,696,624,712}},
+  {name="Cruce ante las consolas; oeste hacia las vigas",sound="connection",box={608,600,624,616}},
+  {name="Computadora oeste; L R A juntos, teclado A S V",sound="sign",box={608,568,624,584},switch={address=8323236,mask=32}},
+  {name="Computadora este; L R A juntos, teclado A S V",sound="sign",box={656,568,672,584},switch={address=8323236,mask=64}},
+ }},
+ {id="arris_221",location=221,name="vigas de Arris y persecución de la rata",article="las ",house="la Bóveda Arris",bounds={0,0,1024,1024},people={[18]=false,[20]=false,[22]=false,[24]="Rata de la contraseña hacia el sur; corre con B y atrapa con A",[26]="Rata de la contraseña hacia el norte; corre con B y atrapa con A"},nonPeople={[24]=true,[26]=true},friendlyActors={[24]=true,[26]=true},personSounds={[24]="games",[26]="games"},trackActors={[24]=true,[26]=true},guidance="Vigas estrechas: sigue sus giros, sin atajar hacia el sonido de la rata. Desde el norte baja hasta la viga horizontal, ve al oeste, baja al cruce, ve al este, baja, gira al oeste, baja y ve al oeste hacia la salida sur. El Guardián queda al norte. Tras leer la nota del almacén, vuelve aquí y corre manteniendo B; pulsa A cerca de la rata para atraparla. Hay una rata para cada sentido del recorrido. Si escapa, sal y vuelve a entrar.",features={
+  {name="Paso a subsuelo de Arris, consolas",sound="door",box={64,752,80,768}},
+  {name="Paso a cámara del Guardián",sound="door",box={304,16,320,32}},
+  {name="Giro norte de las vigas; oeste al bajar, este al subir",sound="connection",box={304,136,320,152}},
+  {name="Codo noroeste de las vigas",sound="connection",box={64,136,80,152}},
+  {name="Cruce oeste; este al bajar, norte al subir",sound="connection",box={64,328,80,344}},
+  {name="Codo este superior de las vigas",sound="connection",box={400,328,416,344}},
+  {name="Codo este inferior de las vigas",sound="connection",box={400,520,416,536}},
+  {name="Giro central; sur al bajar, este al subir",sound="connection",box={304,520,320,536}},
+  {name="Giro suroeste hacia la salida",sound="connection",box={304,696,320,712}},
+  {name="Viga de salida sur; norte al regresar",sound="connection",box={64,696,80,712}},
+ }},
+ {id="arris_219",location=219,name="cámara del Guardián",article="la ",house="la Bóveda Arris",bounds={0,0,1024,1024},guidance="Cámara del Guardián. El regreso a las vigas está al sur. El almacén está tras la puerta del norte; el Guardián bloquea el avance hasta vencerlo. Los enemigos conservan su señal de peligro.",features={
+  {name="Paso a vigas de Arris y persecución de la rata",sound="door",box={112,464,144,480}},
+  {name="Paso a almacén de alimentos de Arris",sound="door",box={112,304,144,320}},
+ }},
+ {id="arris_344",location=344,name="almacén de alimentos de Arris",article="el ",house="la Bóveda Arris",bounds={0,0,1024,1024},people={[16]=false},guidance="Almacén de alimentos. Examina los restos de la persona al norte para leer su nota y habilitar la persecución de la rata en las vigas. Regresa por la puerta sur. Las notas se leen con aceptar.",features={
+  {name="Paso a cámara del Guardián",sound="door",box={112,208,144,224}},
+  {name="Cofre 1 de almacén de alimentos de Arris",sound="item",box={64,64,80,80},treasure=16119618,solid=true},
+  {name="Restos de una persona y nota sobre la rata; examina",sound="sign",box={128,72,144,88},entity=16},
+  {name="Cofre del almacén; escena de la semilla al acercarte",sound="item",box={64,72,80,88},collected={address=8323236,mask=1}},
+  {name="Cajas del almacén, bloque oeste",sound="furniture",box={80,120,96,136}},
+  {name="Cajas del almacén, bloque central",sound="furniture",box={128,120,144,136}},
+  {name="Cajas del almacén, bloque este",sound="furniture",box={176,120,192,136}},
+ }},
+ {id="arris_215",location=215,name="corredor de enemigos de Arris",article="el ",house="la Bóveda Arris",bounds={0,0,1024,1024},guidance="Corredor con enemigos y un cofre. Regreso a las consolas al sur; las profundidades están al norte. Rodea los escombros siguiendo el suelo transitable.",features={
+  {name="Paso a subsuelo de Arris, consolas",sound="door",box={368,736,400,752}},
+  {name="Paso a profundidades de Arris",sound="door",box={400,32,432,48}},
+  {name="Cofre 1 de corredor de enemigos de Arris",sound="item",box={416,416,432,432},treasure=16119238,solid=true},
+ }},
+ {id="arris_217",location=217,name="profundidades de Arris",article="las ",house="la Bóveda Arris",bounds={0,0,1024,1024},guidance="Profundidades de Arris. Regreso al corredor por el suroeste. La sala de información está al norte; la cámara sellada requiere avanzar en la historia. La consola del norte cambia el paso con L y R mantenidos y A.",features={
+  {name="Paso a corredor de enemigos de Arris",sound="door",box={48,752,80,768}},
+  {name="Paso a sala de información de Arris",sound="door",box={272,48,304,64}},
+  {name="Puerta sellada; bloqueada en la primera visita",sound="door",box={400,32,432,48}},
+  {name="Consola del paso norte; mantén L R y pulsa A",sound="sign",box={352,88,368,104}},
+ }},
+ {id="arris_218",location=218,name="sala de información de Arris",article="la ",house="la Bóveda Arris",bounds={0,0,1024,1024},guidance="Sala de información de Arris. Dos terminales al norte y regreso por el sur. Examina con aceptar y avanza los diálogos; las escenas suspenden la orientación ambiental.",features={
+  {name="Paso a profundidades de Arris",sound="door",box={880,736,912,752}},
+  {name="Terminal izquierdo de información",sound="sign",box={880,616,896,632}},
+  {name="Terminal derecho de información",sound="sign",box={912,616,928,632}},
+ }},
+ {id="arris_220",location=220,name="cámara sellada de Arris",article="la ",house="la Bóveda Arris",bounds={0,0,1024,1024},guidance="Cámara sellada de Arris; no es accesible en la primera visita. Cuatro cofres al norte. Regreso al sur.",features={
+  {name="Paso a profundidades de Arris",sound="door",box={112,720,144,736}},
+  {name="Cofre 1 de cámara sellada de Arris",sound="item",box={96,592,112,608},treasure=16119242,solid=true},
+  {name="Cofre 2 de cámara sellada de Arris",sound="item",box={112,592,128,608},treasure=16119246,solid=true},
+  {name="Cofre 3 de cámara sellada de Arris",sound="item",box={128,592,144,608},treasure=16119250,solid=true},
+  {name="Cofre 4 de cámara sellada de Arris",sound="item",box={144,592,160,608},treasure=16119254,solid=true},
+ }},
+-- END ARRIS
+}
