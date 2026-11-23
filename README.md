@@ -23,9 +23,16 @@ El lector necesita una compilación de Snes9x con soporte Lua:
 
 <https://github.com/agehring80/snes9x-lua>
 
-Es un fork de `snes9xgit/snes9x` que incorpora la API Lua de gocha, solo para Windows. Ese
-repositorio **no publica binarios**: hay que compilarlo con Visual Studio siguiendo sus
-instrucciones de compilación.
+Es un fork de `snes9xgit/snes9x` que incorpora la API Lua de gocha, solo para Windows.
+
+Descarga ya compilada, sin necesidad de instalar nada más:
+
+| Versión | Enlace |
+| --- | --- |
+| Windows 64 bits (recomendada) | <https://github.com/agehring80/snes9x-lua/releases/download/1.63-lua/snes9x-lua-1.63-win32-x64.zip> |
+| Windows 32 bits | <https://github.com/agehring80/snes9x-lua/releases/download/1.63-lua/snes9x-lua-1.63-win32.zip> |
+
+Si prefieres compilarlo tú, el repositorio incluye las instrucciones para Visual Studio.
 
 ## Requisitos
 
@@ -72,7 +79,16 @@ objetivo seleccionado, `Control+F6` selecciona un objetivo y `Control+F7` calcul
 
 - `chrono_prism.cpp`: puente de voz SAPI expuesto a Lua como `chrono_prism_v2.dll`
 - `chrono_audio.cpp`: mezclador de señales espaciales usado por `rooms/audio-config.lua`
-- `prism.dll`: runtime de Prism que aporta el emulador
+- `prism.dll`: [Prism](https://github.com/ethindp/prism), la capa de abstracción de voz y
+  lector de pantalla sobre la que trabaja el puente. Ya viene compilada en `runtime/`.
+
+## Créditos y licencias
+
+- **Prism** (<https://github.com/ethindp/prism>), licencia MPL-2.0. `runtime/prism.dll` es una
+  compilación de ese proyecto y se distribuye aquí conservando su licencia; el código fuente
+  está disponible en el enlace anterior.
+- **Snes9x** y su fork con Lua, ver la sección del emulador.
+- El resto de este repositorio no declara licencia todavía.
 
 ## Estado
 
