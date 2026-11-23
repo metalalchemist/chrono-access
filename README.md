@@ -1,60 +1,80 @@
 # Chrono Access
 
-Accessibility layer for **Chrono Trigger** (SNES) that lets blind and low-vision players
-play the game with spoken feedback from NVDA.
+Capa de accesibilidad para **Chrono Trigger** que permite jugar a personas ciegas o con baja
+visión con narración por voz de NVDA.
 
-The reader runs as a Lua script inside Snes9x through **Prism**, the emulator's Lua API.
-Every frame it inspects the game's RAM and translates world state into speech.
+El lector se ejecuta como script Lua dentro de Snes9x a través de **Prism**, la API Lua del
+emulador. En cada fotograma inspecciona la RAM del juego y traduce el estado del mundo a voz.
 
-## What it speaks
+## Alcance: solo la versión en español (Magno 101%)
 
-- Position, facing and walking route to a chosen target
-- People, doors, stairs, chests, shops, save points and vehicles nearby
-- Menus: inventory, techs, party, config, save/load, shops
-- Battle menu, enemy state and turn timing
-- Dialogue text and mini-games (bike, bell, race, soda, Ioka, dance, horrors)
-- Spatial audio cues that point toward landmarks around the player
+Este proyecto se validó **únicamente** contra la ROM *Chrono Trigger (U) con el parche de
+traducción Magno 101%*. No hay soporte para la versión en inglés ni para otras traducciones.
 
-## Requirements
+- `lector-snes9x.lua` comprueba al cargar una firma de la rutina del menú (dirección `0xC2E236`);
+  si no coincide, el lector se detiene con un mensaje explícito.
+- `magno-charset.lua` traduce la tabla de glifos del parche: acentos, ñ y signos de apertura
+  sustituyen símbolos originales. Con otra ROM el texto se leería corrupto aunque la firma pasara.
+- Toda la narración, los perfiles de zona y la documentación están en español.
+
+## Emulador necesario
+
+El lector necesita una compilación de Snes9x con soporte Lua:
+
+<https://github.com/agehring80/snes9x-lua>
+
+Es un fork de `snes9xgit/snes9x` que incorpora la API Lua de gocha, solo para Windows. Ese
+repositorio **no publica binarios**: hay que compilarlo con Visual Studio siguiendo sus
+instrucciones de compilación.
+
+## Requisitos
 
 - Windows
-- Snes9x with Prism/Lua scripting support
-- NVDA screen reader
-- A ROM whose menu routine matches the supported signature. It is checked at load time
-  and the reader stops with an explicit message if it does not match.
+- Snes9x con soporte Lua (enlace arriba)
+- Lector de pantalla NVDA
+- ROM *Chrono Trigger (U)* con el parche Magno 101%
 
-## Quick start
+## Inicio rápido
 
-| Script | Purpose |
+| Script | Para qué sirve |
 | --- | --- |
-| `iniciar-lector.cmd` | Starts the emulator with the reader loaded |
-| `recargar-lector.cmd` | Reloads the reader in an already running emulator |
-| `preparar-controles.ps1` | Configures the Nintendo controller layout |
-| `prepare-sounds.ps1` | Regenerates the cue audio in `runtime/sounds` |
+| `iniciar-lector.cmd` | Arranca el emulador con el lector cargado |
+| `recargar-lector.cmd` | Recarga el lector en un emulador ya abierto |
+| `preparar-controles.ps1` | Configura la disposición del mando de Nintendo |
+| `prepare-sounds.ps1` | Regenera las señales de audio de `runtime/sounds` |
 
-Main keys: `Control+F1` learns the sound cues, `Control+F5` orients toward the selected
-target, `Control+F6` selects a target, `Control+F7` computes a route.
+Teclas principales: `Control+F1` aprende las señales de sonido, `Control+F5` orienta hacia el
+objetivo seleccionado, `Control+F6` selecciona un objetivo y `Control+F7` calcula la ruta.
 
-## Layout
+## Qué narra
 
-| Path | Purpose |
+- Posición, orientación y ruta de caminata hacia el objetivo elegido
+- Personas, puertas, escaleras, cofres, tiendas, puntos de guardado y vehículos cercanos
+- Menús: inventario, técnicas, grupo, configuración, guardar y cargar, comercio
+- Menú de combate, estado de los enemigos y ritmo de los turnos
+- Diálogos y minijuegos (moto, campana, carrera, soda, Ioka, baile, horrores)
+- Señales de audio espaciales que apuntan a los elementos cercanos
+
+## Estructura
+
+| Ruta | Contenido |
 | --- | --- |
-| `lector-snes9x.lua` | Entry point: verifies the ROM, initializes voice, wires every reader |
-| `*-reader.lua` | Read game state and speak it |
-| `*-model.lua` | Data models for the described entities |
-| `rooms/` | Per-area profiles: landmarks, obstacles, distances and cue sounds |
-| `runtime/` | Native modules and cue audio |
-| `*.cpp`, `*.h` | Native sources for the voice and audio modules |
-| `continuar chrono.md` | Working notes, delivery by delivery (Spanish) |
-| `documentación/` | Per-delivery documentation (Spanish) |
+| `lector-snes9x.lua` | Punto de entrada: verifica la ROM, inicializa la voz y conecta cada lector |
+| `*-reader.lua` | Leen el estado del juego y lo narran |
+| `*-model.lua` | Modelos de datos de las entidades descritas |
+| `rooms/` | Perfiles por zona: referencias, obstáculos, distancias y sonidos de señal |
+| `runtime/` | Módulos nativos ya compilados y señales de audio |
+| `*.cpp`, `*.h` | Código fuente de los módulos de voz y audio |
+| `continuar chrono.md` | Notas de trabajo entrega por entrega |
+| `documentación/` | Documentación de cada entrega |
 
-## Native modules
+## Módulos nativos
 
-- `chrono_prism.cpp` — SAPI voice bridge exposed to Lua as `chrono_prism_v2.dll`
-- `chrono_audio.cpp` — spatial cue mixer used by `rooms/audio-config.lua`
-- `prism.dll` — Prism runtime provided by Snes9x
+- `chrono_prism.cpp`: puente de voz SAPI expuesto a Lua como `chrono_prism_v2.dll`
+- `chrono_audio.cpp`: mezclador de señales espaciales usado por `rooms/audio-config.lua`
+- `prism.dll`: runtime de Prism que aporta el emulador
 
-## Status
+## Estado
 
-Work in progress, delivered iteratively. Progress notes and pending areas live in
+Trabajo en curso, entregado por iteraciones. El avance y las zonas pendientes están en
 `continuar chrono.md`.
