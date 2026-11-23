@@ -89,9 +89,9 @@ objetivo seleccionado, `Control+F6` selecciona un objetivo y `Control+F7` calcul
   `LICENSES/MPL-2.0.md`. `runtime/prism.dll` es una compilación de ese proyecto y se distribuye
   conservando su licencia; el código fuente está disponible en el enlace anterior.
 - **Snes9x** y su fork con Lua: ver la sección del emulador.
-- **Recursos del juego**: los sonidos de `runtime/sounds/` son propiedad de Square Enix. No
-  están cubiertos por la licencia MIT ni se autoriza su uso fuera de este proyecto; se incluyen
-  como referencia para quien ya posee el juego.
+- **Sonidos de `runtime/sounds/`**: son recursos del proyecto, no material extraído del juego.
+  `prepare-sounds.ps1` los produce a partir de los originales de `sounds/`, que no se incluyen en
+  el repositorio; `enemy.wav` y `enemy.mp3` se derivan de `person.wav` bajándolo cuatro semitonos.
 
 La MIT y la MPL-2.0 son compatibles: la MPL-2.0 solo impone obligaciones sobre sus propios
 archivos (`prism.dll`), no sobre el código de este repositorio.
